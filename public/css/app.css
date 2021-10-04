@@ -1,0 +1,31 @@
+* {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#overview_post {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    max-width: 30%;
+}
+
+#comment {
+    font-size: small;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    max-width: 15%;
+}
+
+.post_image {
+    max-height: 20em;
+    max-width: 100%;
+    border-style: dotted;
+    border-width: 1px;
+    border-color: black;
+}
+
+.premium {
+    font-weight: bold;
+    color:rgb(124, 126, 0);
+}

@@ -1,0 +1,16 @@
+* {
+    font-family: monospace;
+    font-size: xx-small;
+
+}
+
+#overview_post {
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+}
+
+.post_image {
+    max-width: 10px;
+    max-height: 10px;
+}
