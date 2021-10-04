@@ -11,9 +11,8 @@ class images extends Model
 
     protected $fillable = ['name', 'path'];
 
-    public function posts() {
+    public function posts()
+    {
         return $this->belongsToOne(Posts::class);
     }
-
-
 }

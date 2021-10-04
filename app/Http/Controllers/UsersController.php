@@ -14,42 +14,47 @@ class UsersController extends Controller
 
     protected $current_user = '';
 
-    public function login() {
-
+    public function login()
+    {
+        // CR :: Waarom staat dit hieronder er?
         $users_DB = Users::all();
 
         return view('posts.login');
     }
 
-    public function create() {
+    public function create()
+    {
+        // CR :: Waarom staat dit hieronder er?
         $users_DB = Users::all();
 
         return view('posts\user_create');
     }
 
-    public function store() {
+    public function store()
+    {
         Users::create(request()->validate([
             'email' => 'required|unique:Users|email',
             'username' => 'required|unique:Users|min:2',
             'password' => 'required|min:2'
         ]));
-        
+
         return redirect('/');
     }
 
-    public function edit() {
-        
+    public function edit()
+    {
     }
 
-    public function update() {
-        
+    public function update()
+    {
     }
 
-    public function destroy() {
-        
+    public function destroy()
+    {
     }
 
-    public function validateUser() {
+    public function validateUser()
+    {
 
         request()->validate([
             'username' => 'required',
@@ -57,7 +62,7 @@ class UsersController extends Controller
         ]);
 
         $user = Users::where('username', '=', request('username'))->first();
-        
+
         if ($user === null) {
             return view('posts/login');
         } else {
@@ -69,11 +74,13 @@ class UsersController extends Controller
                 'user' => $user,
                 'catagories' => Catagories::all(),
                 'catagory_filter' => 'all',
-                'username' => $user->username]);
+                'username' => $user->username
+            ]);
         }
     }
 
-    public function subscription($user_id) {
+    public function subscription($user_id)
+    {
 
         $user = Users::where('id', '=', $user_id)->first();
 
@@ -82,7 +89,7 @@ class UsersController extends Controller
         } else {
             $subscribed = FALSE;
         }
-        
+
         return view('posts.subscription', [
             'user_id' => $user_id,
             'username' => $user->username,
@@ -90,8 +97,9 @@ class UsersController extends Controller
         ]);
     }
 
-    public function subscribe($user_id) {
-        
+    public function subscribe($user_id)
+    {
+
         $user = Users::where('id', '=', $user_id)->first();
 
         if ($user->subscribed) {
@@ -103,13 +111,5 @@ class UsersController extends Controller
         }
 
         return redirect()->route('posts.overview', ['user_id' => $user_id]);
-
-
     }
-
-    
-
 }
-
-
-
